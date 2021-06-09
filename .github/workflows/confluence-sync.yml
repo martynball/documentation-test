@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - '**.md'
+      - '!README.md'
       - '!docs/docs-missing.md'
       - '!docs/other/click-icons.md'
       - '!docs/documentation.md'
