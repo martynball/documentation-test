@@ -21,4 +21,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Sync to Confluence
-        run: mark -k --drop-h1 -f '**.md' -b https://click-dealer.atlassian.net/wiki -u ${{ secrets.  }} -p ${{ secrets.MARK_PASSWORD }}
+        run: mark -k --drop-h1 -f '**.md' -b https://click-dealer.atlassian.net/wiki -u ${{ secrets.MARK_USERNAME }} -p ${{ secrets.MARK_PASSWORD }}
