@@ -20,6 +20,6 @@ jobs:
       - name: Sync to Confluence
         run: for file in $(find -type f -name '*.md'); do
               echo "> Sync $file";
-              { mark -k --drop-h1 -b https://click-dealer.atlassian.net/wiki -u ${{ secrets.MARK_USERNAME }} -p ${{ secrets.MARK_PASSWORD }} -f $file } || { echo "Missing headers..."; continue; };
+              mark -k --drop-h1 -b https://click-dealer.atlassian.net/wiki -u ${{ secrets.MARK_USERNAME }} -p ${{ secrets.MARK_PASSWORD }} -f $file || echo "Missing headers..."; continue;
               echo;
             done
