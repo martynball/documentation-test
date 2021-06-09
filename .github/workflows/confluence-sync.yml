@@ -1,0 +1,24 @@
+name: Confluence Sync
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'resources/docs/**/*.md'
+      - '!resources/docs/docs-missing.md'
+      - '!resources/docs/other/click-icons.md'
+      - '!resources/docs/documentation.md'
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    container:
+      image: kovetskiy/mark
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Sync to Confluence
+        run: mark -k --drop-h1 -f '*.md' -b https://click-dealer.atlassian.net/wiki -u ${{ secrets.MARK_USERNAME }} -p ${{ secrets.MARK_PASSWORD }}
